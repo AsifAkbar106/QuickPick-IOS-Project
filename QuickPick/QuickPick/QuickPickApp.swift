@@ -8,18 +8,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
-        configureFirestore()
+        // Remove the local emulator configuration
         return true
-    }
-    
-    private func configureFirestore() {
-        let settings = Firestore.firestore().settings
-        #if DEBUG
-        settings.host = "127.0.0.1:8080"
-        settings.cacheSettings = MemoryCacheSettings()
-        settings.isSSLEnabled = false
-        #endif
-        Firestore.firestore().settings = settings
     }
 }
 
@@ -36,3 +26,4 @@ struct QuickPickApp: App {
         }
     }
 }
+
